@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Students</title>
+    <link rel="stylesheet" th:href="@{/style.css}"></link>
+</head>
+
+<body>
+    <h2>Students</h2>
+    <div th:unless="${#lists.isEmpty(students)}">
+        <dl th:each="student : ${students}">
+            <dt class="studentHeadline">
+                <span th:text="${student.studentFirstName}">Name</span>
+                <span th:text="${student.studentLastName}">Name</span>
+            </dt>
+        </dl>
+    </div>
+    <div th:if="${#lists.isEmpty(students)}">
+        <p>You have no students in your student list</p>
+    </div>
+
+    <div>
+        <form method="POST">
+            <label for="studentFirstName">First Name:</label>
+            <input type="text" name="studentFirstName" id="studentFirstName" size="50"></input><br/>
+            <label for="studentLastName">Last Name:</label>
+            <input type="text" name="studentLastName" id="studentLastName" size="50"></input><br/>
+            <label for="studentEmail">Email:</label>
+            <input type="text" name="studentEmail" id="studentEmail" size="50"></input><br/>
+            <label for="studentPhone">Phone:</label>
+            <input type="text" name="studentPhone" id="studentPhone" size="50"></input><br/>
+            <label for="allowTexts">Allow Texts?</label>
+            <input type="checkbox" name="allowTexts" id="allowTexts" value="true"></input><br/>
+            <label for="allowEmails">Allow Emails?</label>
+            <input type="checkbox" name="allowEmails" id="allowEmails" value="true"></input><br/>
+            <input type="submit"></input>
+        </form>
+    </div>
+</body>
+
+</html>

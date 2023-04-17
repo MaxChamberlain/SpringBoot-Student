@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+    <link rel="stylesheet" th:href="@{/style.css}"></link>
+</head>
+
+<body>
+    <div class="container">
+        <form class="form-signin" action="/register" th:object="${student}" method="POST" enctype="utf8">
+            <h2 class="form-signin-heading">Sign Up</h2>
+            <div class="flex gap-4 w-full">
+                <p>
+                    <label for="first-name" class="sr-only">First Name</label>
+                    <input th:field="*{studentFirstName}" type="text" id="first-name" name="first-name" class="form-control" placeholder="First Name" required="" autofocus="">
+                    <p th:each="error: ${#fields.errors('firstName')}"
+                       th:text="${error}">Validation error</p>
+                </p>
+                <p>
+                    <label for="last-name" class="sr-only">Last Name</label>
+                    <input th:field="*{studentLastName}" type="text" id="last-name" name="last-name" class="form-control" placeholder="Last Name" required="" autofocus="">
+                    <p th:each="error: ${#fields.errors('firstName')}"
+                       th:text="${error}">Validation error</p>
+                </p>
+            </div>
+            <p>
+                <label for="password" class="sr-only">Password</label>
+                <input type="password" id="password" name="password" class="form-control" placeholder="Password" required="">
+            </p>
+            <input name="_csrf" type="hidden" value="1udBK8WA3WOXr_RPzdb2dPtb_Sf-ey50TTVFy0CyQhUcgFYT49cgHKTh6Fa6zcd__PvCR51u0B_KHk1ZLFR1_iKLcSR44TR2">
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        </form>
+    </div>
+</body>
+
+</html>

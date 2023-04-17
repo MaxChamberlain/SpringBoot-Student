@@ -1,0 +1,15 @@
+.flex{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.gap-4{
+    gap: 1rem;
+}
+
+w-full {
+    width: 100%;
+}
