@@ -7,6 +7,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -26,6 +27,14 @@ public class User implements UserDetails {
     private Boolean allowTexts;
     private Boolean allowEmails;
     private String password;
+
+    @GeneratedValue
+    @Temporal(TemporalType.TIMESTAMP)
+    private String nextInteractionDate;
+
+    @GeneratedValue
+    @Temporal(TemporalType.TIMESTAMP)
+    private String lastInteractionDate;
 
     @Enumerated(EnumType.STRING)
     private Role role;
@@ -123,5 +132,21 @@ public class User implements UserDetails {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public String getNextInteractionDate() {
+        return nextInteractionDate;
+    }
+
+    public void setNextInteractionDate(String nextInteractionDate) {
+        this.nextInteractionDate = nextInteractionDate;
+    }
+
+    public String getLastInteractionDate() {
+        return lastInteractionDate;
+    }
+
+    public void setLastInteractionDate(String lastInteractionDate) {
+        this.lastInteractionDate = lastInteractionDate;
     }
 }

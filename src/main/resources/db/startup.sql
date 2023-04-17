@@ -9,6 +9,8 @@ CREATE TABLE IF NOT EXISTS public._user
     student_first_name character varying(255) COLLATE pg_catalog."default",
     student_last_name character varying(255) COLLATE pg_catalog."default",
     student_phone character varying(255) COLLATE pg_catalog."default",
+    previous_interaction_date date default NOW(),
+    next_interaction_date date default NOW(),
     CONSTRAINT _user_pkey PRIMARY KEY (id)
 )
 

@@ -10,6 +10,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.util.Date;
+
 @Service
 @RequiredArgsConstructor
 public class AuthenticationService {
@@ -22,6 +25,9 @@ public class AuthenticationService {
         if (userRepository.findByEmail(request.getEmail()).isPresent()) {
             throw new IllegalStateException("Email already exists");
         }
+        LocalDate today = LocalDate.now();
+        LocalDate oneMonthFromToday = today.plusMonths(1);
+
         var user = new User();
         user.setStudentFirstName(request.getFirstname());
         user.setStudentLastName(request.getLastname());
@@ -31,6 +37,8 @@ public class AuthenticationService {
         user.setRole(Role.USER);
         user.setAllowEmails(false);
         user.setAllowTexts(false);
+        user.setLastInteractionDate(today.toString());
+        user.setNextInteractionDate(oneMonthFromToday.toString());
 
         userRepository.save(user);
 
@@ -41,16 +49,13 @@ public class AuthenticationService {
     }
 
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
-        System.out.println("User Made it here 6.... ");
         authenticationManager.authenticate(
             new UsernamePasswordAuthenticationToken(
                     request.getEmail(),
                     request.getPassword()
             )
         );
-        System.out.println("User Made it here 7.... ");
         var user = userRepository.findByEmail(request.getEmail()).orElseThrow();
-        System.out.println("User Made it here 8.... " + user);
 
         var jwtToken = jwtService.generateToken(user);
         return new AuthenticationResponse().builder()
