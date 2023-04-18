@@ -29,6 +29,7 @@ async function onLogin() {
         let text = await data.text()
         let token = text?.split('=')[1]?.replace(')', '') ?? null;
         if (token != null) {
+            if (text.includes("stylesheet")) return
             document.cookie = "ACCESS_TOKEN=Bearer " + token;
         } else {
             document.cookie = "ACCESS_TOKEN=; max-age=0";
@@ -77,6 +78,7 @@ async function onRegister(){
         let text = await data.text()
         let token = text?.split('=')[1]?.replace(')', '') ?? null;
         if (token != null) {
+            if (text.includes("stylesheet")) return
             document.cookie = "ACCESS_TOKEN=Bearer " + token;
         } else {
             document.cookie = "ACCESS_TOKEN=; max-age=0";

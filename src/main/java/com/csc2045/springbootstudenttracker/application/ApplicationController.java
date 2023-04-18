@@ -35,4 +35,10 @@ public class ApplicationController {
         model.addAttribute("registerRequest", registerRequest);
         return "register";
     }
+
+    @RequestMapping(value="/students", method=RequestMethod.GET)
+    public String students(Model model) {
+        model.addAttribute("students", userRepository.findAll());
+        return "studentList";
+    }
 }

@@ -14,7 +14,7 @@
             <p style="color: hsl(0, 100%, 60%)">[[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]</p>
         </div>
         <div th:object="${authenticationRequest}" style="flex-direction: column">
-            <label for="email">Email:</label>
+            <label for="email">Email</label>
             <input type="text" name="email" id="email" size="50" th:field="${authenticationRequest.email}"></input><br/>
             <label for="password">Password:</label>
             <input type="password" name="password" id="password" size="15" th:field="${authenticationRequest.password}"></input><br/>
