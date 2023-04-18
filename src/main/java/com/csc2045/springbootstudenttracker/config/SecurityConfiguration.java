@@ -24,17 +24,24 @@ public class SecurityConfiguration {
         http
         .csrf()
         .disable()
-        .authorizeHttpRequests()
-        .requestMatchers("/api/v1/auth/**")
-        .permitAll()
-        .anyRequest()
-        .authenticated()
-        .and()
+        .authorizeHttpRequests(request -> {
+            request
+            .requestMatchers("/api/v1/auth/**", "/login", "/register", "/css/**", "/js/**")
+            .permitAll()
+            .anyRequest()
+            .authenticated();
+        })
         .sessionManagement()
         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
         .and()
         .authenticationProvider(authenticationProvider)
-        .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+        .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+        .formLogin(
+                formLogin -> formLogin
+                        .loginPage("/login")
+                        .defaultSuccessUrl("/home", true)
+                        .permitAll()
+        );
 
         return http.build();
     }

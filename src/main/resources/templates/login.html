@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}" type="text/css" />
+    <script src="../static/js/forms.js" th:src="@{/js/forms.js}"></script>
+</head>
+<body>
+<div class="fullscreen-container" onload="onOpenLogin()">
+    <div class="form-container">
+        <h2>Sign In</h2>
+        <div class="divider"></div>
+        <div th:if="${param.error}">
+            <p style="color: hsl(0, 100%, 60%)">[[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]</p>
+        </div>
+        <div th:object="${authenticationRequest}" style="flex-direction: column">
+            <label for="email">Email:</label>
+            <input type="text" name="email" id="email" size="50" th:field="${authenticationRequest.email}"></input><br/>
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" size="15" th:field="${authenticationRequest.password}"></input><br/>
+            <button type="submit" onclick="onLogin()">Login</button>
+        </div>
+        <span>Don't have an account? <a class='link' href="/register">Sign Up!</a></span>
+    </div>
+</div>
+</body>
+</html>

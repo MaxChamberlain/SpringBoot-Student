@@ -1,13 +1,10 @@
 package com.csc2045.springbootstudenttracker.authentication;
 
 import lombok.RequiredArgsConstructor;
-import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.naming.Binding;
 
 @RestController
 @RequestMapping("/api/v1/auth")
@@ -18,16 +15,18 @@ public class AuthenticationController {
 
     @PostMapping("/register")
     public ResponseEntity<AuthenticationResponse> register(
-        @RequestBody RegisterRequest request
+            @RequestBody RegisterRequest registerRequest
     ) {
-        return ResponseEntity.ok(authenticationService.register(request));
+        ResponseEntity response = ResponseEntity.ok(String.valueOf(authenticationService.register(registerRequest)));
+        return response;
     }
 
     @PostMapping("/authenticate")
-    public ResponseEntity<AuthenticationResponse> register(
+    public ResponseEntity<AuthenticationResponse> authenticate(
             @RequestBody AuthenticationRequest request
     ) {
-        return ResponseEntity.ok(authenticationService.authenticate(request));
+        ResponseEntity response = ResponseEntity.ok(String.valueOf(authenticationService.authenticate(request)));
+        return response;
     }
 
 }

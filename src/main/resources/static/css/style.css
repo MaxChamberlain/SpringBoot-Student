@@ -1,0 +1,112 @@
+:root{
+    --primary-blue: hsl(220, 100%, 60%);
+}
+
+.flex{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.gap-4{
+    gap: 1rem;
+}
+
+.w-full {
+    width: 100%;
+}
+
+.w-screen{
+    width: 100vw;
+}
+
+.h-screen{
+    height: 100vh;
+}
+
+.border{
+    border: 1px solid black;
+}
+
+.p-2{
+    padding: 0.5rem;
+}
+
+.p-4{
+    padding: 1rem;
+}
+
+.rounded{
+    border-radius: 0.25rem;
+}
+
+.fullscreen-container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.form-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    border: 1px solid black;
+    border-radius: 0.25rem;
+    font-size: 1.25rem;
+    padding: 1rem;
+    background-color: hsl(220, 12%, 30%);
+    width: 690px;
+}
+
+.form > input{
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid black;
+    border-radius: 0.25rem;
+    margin: 0.5rem 0;
+    background-color: rgba(0,0,0,0.2);
+    color: white;
+}
+
+.form > button{
+    background-color: var(--primary-blue);
+    color: white;
+    border: none;
+    border-radius: 0.25rem;
+    padding: 0.5rem;
+    margin: 2rem auto;
+    width: 100%;
+}
+
+.divider{
+    width: 100%;
+    height: 1px;
+    background-color: #ccc;
+    margin: 1rem 0;
+}
+
+body{
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    background-color: hsl(220, 16%, 20%);
+}
+
+.link{
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+@media only screen and (max-width: 768px) {
+    .form-container{
+        width: 90%;
+    }
+}

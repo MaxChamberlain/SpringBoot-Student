@@ -1,36 +1,39 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Register</title>
-    <link rel="stylesheet" th:href="@{/style.css}"></link>
-</head>
-
-<body>
-    <div class="container">
-        <form class="form-signin" action="/register" th:object="${student}" method="POST" enctype="utf8">
-            <h2 class="form-signin-heading">Sign Up</h2>
-            <div class="flex gap-4 w-full">
-                <p>
-                    <label for="first-name" class="sr-only">First Name</label>
-                    <input th:field="*{studentFirstName}" type="text" id="first-name" name="first-name" class="form-control" placeholder="First Name" required="" autofocus="">
-                    <p th:each="error: ${#fields.errors('firstName')}"
-                       th:text="${error}">Validation error</p>
-                </p>
-                <p>
-                    <label for="last-name" class="sr-only">Last Name</label>
-                    <input th:field="*{studentLastName}" type="text" id="last-name" name="last-name" class="form-control" placeholder="Last Name" required="" autofocus="">
-                    <p th:each="error: ${#fields.errors('firstName')}"
-                       th:text="${error}">Validation error</p>
-                </p>
+    <head>
+        <title>Login</title>
+        <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}" type="text/css" />
+        <script src="../static/js/forms.js" th:src="@{/js/forms.js}"></script>
+    </head>
+    <body>
+        <div class="fullscreen-container" onload="onOpenRegister()">
+            <div class="form-container">
+                <h2>Register</h2>
+                <div class="divider"></div>
+                <div th:if="${param.error}">
+                    <p style="color: hsl(0, 100%, 60%)">[[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]</p>
+                </div>
+                <div id="form"style="flex-direction: column" th:object ="${registerRequest}">
+                    <div style="display: flex; justify-content: space-between; width: 100%; margin-bottom: 10px;">
+                        <div style="width: 48%;">
+                            <label for="firstname">First Name:</label>
+                            <input type="text" name="firstname" id="firstname" size="50" th:field="${registerRequest.firstname}"></input><br/>
+                        </div>
+                        <div style="width: 48%;">
+                            <label for="lastname">Last Name:</label>
+                            <input type="text" name="lastname" id="lastname" size="50" th:field="${registerRequest.lastname}"></input><br/>
+                        </div>
+                    </div>
+                    <label for="email">Email:</label>
+                    <input type="text" name="email" id="email" size="50" th:field="${registerRequest.email}"></input><br/>
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" id="password" size="15" th:field="${registerRequest.password}"></input><br/>
+                    <label for="phone">Phone:</label>
+                    <input type="text" name="phone" id="phone" size="50" th:field="${registerRequest.phone}"></input><br/>
+                    <button type="submit" onclick="onRegister()">Register</button>
+                </div>
+                <span>Already have an account? <a class='link' href="/login">Log In!</a></span>
             </div>
-            <p>
-                <label for="password" class="sr-only">Password</label>
-                <input type="password" id="password" name="password" class="form-control" placeholder="Password" required="">
-            </p>
-            <input name="_csrf" type="hidden" value="1udBK8WA3WOXr_RPzdb2dPtb_Sf-ey50TTVFy0CyQhUcgFYT49cgHKTh6Fa6zcd__PvCR51u0B_KHk1ZLFR1_iKLcSR44TR2">
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-        </form>
-    </div>
-</body>
-
+        </div>
+    </body>
 </html>
