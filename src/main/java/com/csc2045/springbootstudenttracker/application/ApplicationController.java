@@ -1,5 +1,6 @@
 package com.csc2045.springbootstudenttracker.application;
 
+import com.csc2045.springbootstudenttracker.activity.ActivityRepository;
 import com.csc2045.springbootstudenttracker.authentication.AuthenticationRequest;
 import com.csc2045.springbootstudenttracker.authentication.AuthenticationService;
 import com.csc2045.springbootstudenttracker.authentication.JwtService;
@@ -18,14 +19,22 @@ public class ApplicationController {
     private UserRepository userRepository;
     private JwtService jwtService;
     private AuthenticationService authenticationService;
+    private ActivityRepository activityRepository;
     @Autowired
-    public ApplicationController(UserRepository userRepository, JwtService jwtService, AuthenticationService authenticationService) {
+    public ApplicationController(UserRepository userRepository, JwtService jwtService, AuthenticationService authenticationService, ActivityRepository activityRepository) {
         this.userRepository = userRepository;
         this.jwtService = jwtService;
         this.authenticationService = authenticationService;
+        this.activityRepository = activityRepository;
     }
     @RequestMapping
     public String home(Model model) {
+        return "redirect:/home";
+    }
+
+
+    @RequestMapping(value="/home", method=RequestMethod.GET)
+    public String homeDefault(Model model) {
         return "home";
     }
 
@@ -52,6 +61,8 @@ public class ApplicationController {
     @RequestMapping(value="/students", method=RequestMethod.GET)
     public String students(Model model) {
         model.addAttribute("students", userRepository.findAll());
+        System.out.println(userRepository.findAll());
+
         return "studentList";
     }
 

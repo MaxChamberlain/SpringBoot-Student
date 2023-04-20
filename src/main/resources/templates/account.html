@@ -9,12 +9,16 @@
 </head>
 
 <body>
-  <div class="layout-header">
-    <a href="/account" id="my-account-link">
-      <div class="layout-button">
-        My Account
-      </div>
+  <div class="layout-header" onload="onHeaderLoad()">
+    <a href="/home">
+      <img src="../static/assets/images/home_icon.png" th:src="@{/assets/images/home_icon.png}" style="height: 2rem; aspect-ratio: 1/1; object-fit: contain; filter: invert();"></image>
     </a>
+    <a href="/students" class="link" style="color: white;">
+      Student List
+    </a>
+    <div class="layout-button" onclick="navigateToAccountPage()">
+      My Account
+    </div>
   </div>
   <h2 style="text-align: center; font-size: 2rem;">
       Account details for <span th:text="${user.getStudentFirstName()}"></span> <span th:text="${user.getStudentLastName()}"></span>

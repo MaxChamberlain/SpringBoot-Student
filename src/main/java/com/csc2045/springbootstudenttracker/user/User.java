@@ -1,16 +1,14 @@
 package com.csc2045.springbootstudenttracker.user;
 
+import com.csc2045.springbootstudenttracker.activity.Activity;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Collection;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
-@Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -27,6 +25,9 @@ public class User implements UserDetails {
     private Boolean allowTexts;
     private Boolean allowEmails;
     private String password;
+
+    @OneToMany(mappedBy = "userId")
+    private List<Activity> activities;
 
     @GeneratedValue
     @Temporal(TemporalType.TIMESTAMP)
@@ -148,5 +149,13 @@ public class User implements UserDetails {
 
     public void setLastInteractionDate(String lastInteractionDate) {
         this.lastInteractionDate = lastInteractionDate;
+    }
+
+    public List<Activity> getActivities() {
+        return activities;
+    }
+
+    public void setActivities(List<Activity> activities) {
+        this.activities = activities;
     }
 }

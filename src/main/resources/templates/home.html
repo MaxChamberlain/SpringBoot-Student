@@ -1,1 +1,24 @@
-<div>test</div>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Students</title>
+        <link rel="stylesheet" th:href="@{/css/style.css}"></link>
+        <link rel="stylesheet" th:href="@{/css/header.css}"></link>
+        <script src="../static/js/utils.js" th:src="@{/js/utils.js}"></script>
+    </head>
+
+    <body>
+        <div class="layout-header" onload="onHeaderLoad()">
+            <a href="/home">
+                <img src="../static/assets/images/home_icon.png" th:src="@{/assets/images/home_icon.png}" style="height: 2rem; aspect-ratio: 1/1; object-fit: contain; filter: invert();"></image>
+            </a>
+            <a href="/students" class="link" style="color: white;">
+                Student List
+            </a>
+            <div class="layout-button" onclick="navigateToAccountPage()">
+                My Account
+            </div>
+        </div>
+    </body>
+
+</html>
