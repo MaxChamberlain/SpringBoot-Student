@@ -1,0 +1,28 @@
+
+
+.layout-header{
+    height: 3rem;
+    width: 100vw;
+    background-color: hsl(220, 12%, 15%);
+}
+
+.layout-button{
+    color: white;
+    border: 1px solid white;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    margin: 0.325rem auto;
+    width: fit-content;
+    position: absolute;
+    right: 0.325rem;
+    top: 0;
+    cursor: pointer;
+    background-color: hsl(220, 12%, 15%);
+    transition: all 0.2s ease-in-out;
+    text-decoration: none;
+}
+
+.layout-button:hover{
+    background-color: white;
+    color: hsl(220, 12%, 15%);
+}

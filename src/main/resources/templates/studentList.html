@@ -3,13 +3,19 @@
 <head>
     <title>Students</title>
     <link rel="stylesheet" th:href="@{/css/style.css}"></link>
+    <link rel="stylesheet" th:href="@{/css/header.css}"></link>
     <script src="../static/js/utils.js" th:src="@{/js/utils.js}"></script>
 </head>
 
 <body>
-    <h2>Students</h2>
+    <div class="layout-header" onload="onHeaderLoad()">
+        <div class="layout-button" onclick="navigateToAccountPage()">
+            My Account
+        </div>
+    </div>
+    <h2 style="text-align: center;">Students</h2>
     <div th:unless="${#lists.isEmpty(students)}" class="student-list-container">
-        <dl th:each="student : ${students}" class="student-list-card">
+        <dl th:each="student : ${students}" class="student-list-card" style="position: relative;">
             <dt style="font-weight: 100; letter-spacing: 1px">
                 <span th:text="${student.studentFirstName}">Name</span>
                 <span th:text="${student.studentLastName}">Name</span>
@@ -19,6 +25,9 @@
                 <span th:text="${student.studentEmail}">Email</span>
                 <image src="../static/assets/images/copy_icon.png" th:src="@{/assets/images/copy_icon.png}" id="copy-icon" style="height: 1rem; aspect-ratio: 1/1; object-fit: contain; filter: invert();"></image>
             </dt>
+            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                Currently
+            </div>
         </dl>
     </div>
     <div th:if="${#lists.isEmpty(students)}">

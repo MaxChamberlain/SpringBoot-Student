@@ -98,6 +98,7 @@ body{
     font-family: 'Roboto', sans-serif;
     background-color: hsl(220, 16%, 20%);
     padding: 0 !important;
+    margin: 0 !important;
 }
 
 .link{
@@ -123,7 +124,7 @@ body{
     background-color: hsl(220, 12%, 30%);
     overflow-y: auto;
     position: absolute;
-    top: 4rem;
+    top: 7rem;
     left: 1rem;
     right: 1rem;
     bottom: 0;

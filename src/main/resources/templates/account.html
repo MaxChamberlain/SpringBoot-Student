@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Account</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}"></link>
+  <link rel="stylesheet" th:href="@{/css/header.css}"></link>
+  <script src="../static/js/utils.js" th:src="@{/js/utils.js}"></script>
+  <script src="../static/js/account.js" th:src="@{/js/account.js}"></script>
+</head>
+
+<body>
+  <div class="layout-header">
+    <a href="/account" id="my-account-link">
+      <div class="layout-button">
+        My Account
+      </div>
+    </a>
+  </div>
+  <h2 style="text-align: center; font-size: 2rem;">
+      Account details for <span th:text="${user.getStudentFirstName()}"></span> <span th:text="${user.getStudentLastName()}"></span>
+  </h2>
+  <div style="display: flex; gap: 1rem; justify-content: center; font-size: 1.5rem;">
+    <div style="background: hsl(220, 30%, 30%); padding: 1rem; border-radius: 0.5rem;">
+      <span>Email</span>
+      <input type="text" id="email" th:value="${user.getEmail()}"></input>
+    </div>
+    <div style="background: hsl(220, 30%, 30%); padding: 1rem; border-radius: 0.5rem;">
+      <div style="display: flex; gap: 1rem; justify-content: center;">
+        <span>Opt into texts?</span> <input type="checkbox" th:checked="${user.getAllowTexts()}" id="texts-opted"></input>
+      </div>
+      <div style="display: flex; gap: 1rem; justify-content: center;">
+        <span>Opt into emails?</span> <input type="checkbox" th:checked="${user.getAllowEmails()}" id="emails-opted"></input>
+      </div>
+    </div>
+  </div>
+  <button onclick="updateAccountDetails()" class="layout-button" style="top: 4rem; right: 1rem; background-color: hsl(220, 100%, 60%); font-size: 1rem; border: none;">
+    Update Account
+  </button>
+  <button onclick="window.location.reload()" class="layout-button" style="top: 4rem; right: 10rem; background-color: hsl(0, 100%, 60%); font-size: 1rem; border: none;">
+    Cancel
+  </button>
+</body>
+
+</html>
