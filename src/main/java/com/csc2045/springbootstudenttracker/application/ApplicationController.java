@@ -61,9 +61,14 @@ public class ApplicationController {
     @RequestMapping(value="/students", method=RequestMethod.GET)
     public String students(Model model) {
         model.addAttribute("students", userRepository.findAll());
-        System.out.println(userRepository.findAll());
 
         return "studentList";
+    }
+
+    @RequestMapping(value="/student/{id}", method=RequestMethod.GET)
+    public String student(Model model, @PathVariable("id") Long id) {
+        model.addAttribute("student", userRepository.findById(id).get());
+        return "student";
     }
 
     @RequestMapping(value="/account/{token}", method=RequestMethod.GET)

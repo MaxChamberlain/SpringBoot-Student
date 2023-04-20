@@ -26,7 +26,8 @@ public class User implements UserDetails {
     private Boolean allowEmails;
     private String password;
 
-    @OneToMany(mappedBy = "userId")
+    @OneToMany()
+    @JoinColumn(name="user_id", referencedColumnName = "id")
     private List<Activity> activities;
 
     @GeneratedValue

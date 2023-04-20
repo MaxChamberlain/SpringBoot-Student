@@ -31,6 +31,14 @@
                 <span th:text="${student.studentEmail}">Email</span>
                 <image src="../static/assets/images/copy_icon.png" th:src="@{/assets/images/copy_icon.png}" id="copy-icon" style="height: 1rem; aspect-ratio: 1/1; object-fit: contain; filter: invert();"></image>
             </dt>
+            <span th:if="${student.activities.size() <= 0}" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 1.5rem; font-weight: 300; letter-spacing: 1px; color: #999999;">No activities</span>
+            <div th:if="${student.activities.size() > 0}" class="student-card-activity-container">
+                <span>Currently <span th:if='${student.activities[0].type == "School"}'>In School</span><span th:if='${student.activities[0].type == "Work"}'>Working</span></span>
+                <div style="font-size: 1rem; opacity: 0.95; text-align: center">
+                    <span th:text='${"At " + student.activities[0].title}'>title</span> <br />
+                    <span th:text='${"Since " + student.activities[0].startDate}'>startDate</span>
+                </div>
+            </div>
         </dl>
     </div>
     <div th:if="${#lists.isEmpty(students)}">

@@ -25,10 +25,7 @@ public class Activity {
     private String endDate;
     private String title;
     private String description;
-    @JoinColumn(name = "user_id",
-            insertable = false,
-            updatable = false
-    )
-    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    @ManyToOne()
     private User userId;
 }
