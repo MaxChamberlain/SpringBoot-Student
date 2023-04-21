@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Students</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"></link>
+    <link rel="stylesheet" th:href="@{/css/header.css}"></link>
+    <link rel="stylesheet" th:href="@{/css/questionnaire.css}"></link>
+    <script src="../static/js/utils.js" th:src="@{/js/utils.js}"></script>
+    <script src="../static/js/questionnaire.js" th:src="@{/js/questionnaire.js}"></script>
+</head>
+
+<body>
+    <div class="layout-header" onload="onHeaderLoad()">
+        <a href="/home">
+            <img src="../static/assets/images/home_icon.png" th:src="@{/assets/images/home_icon.png}" style="height: 2rem; aspect-ratio: 1/1; object-fit: contain; filter: invert();"></image>
+        </a>
+        <a href="/students" class="link" style="color: white;">
+            Student List
+        </a>
+        <div class="layout-button" onclick="navigateToAccountPage()">
+            My Account
+        </div>
+    </div>
+    <div class="fullscreen-container" onload="onOpenLogin()" style="justify-content: flex-start;">
+        <div class="form-container">
+            Questionnaire
+            <div class="divider"></div>
+            <div class="form">
+                <div class="form-container" id="confirmation">
+                    <p>
+                        Are you the student with
+                        <span th:text='${user.getStudentNumber() == null ? "email address " + user.getStudentEmail() : "student id " + user.getStudentNumber()}'></span>
+                        that attended ACC?
+                    </p>
+                    <div style="display: flex; justify-content: space-between; width: 100%; gap: 1rem; padding: 1rem;">
+                        <button style="width: 100%" onclick="confirmIdentity()">Yes</button>
+                        <button style="width: 100%" onclick="window.location.href='/login'">No</button>
+                    </div>
+                </div>
+                <div class="form-container" id="questions" style="display: none;">
+                    <div th:each="question : ${questions}" class="question-container">
+                        <div class="question">
+                            <div><span th:text="${question.getQuestion()}">question</span> <span th:if="${question.getIsRequired()}" style="color: red">*</span></div>
+                        </div>
+                        <div class="question-response">
+                            <input th:if="${question.getType() == 'text'}" type="text" class="question-response-text" th:id="${question.getQuestionNumber()}" th:name="${question.getQuestionNumber()}"></input>
+                            <input th:if="${question.getType() == 'number'}" type="number" class="question-response-text" th:id="${question.getQuestionNumber()}" th:name="${question.getQuestionNumber()}"></input>
+                            <input th:if="${question.getType() == 'date'}" type="date" class="question-response-text" th:id="${question.getQuestionNumber()}" th:name="${question.getQuestionNumber()}"></input>
+                            <div th:if="${question.getType() == 'radio'}" class="question-response-radio">
+                                <div th:each="option : ${question.getOptions()}" class="question-response-radio-option">
+                                    <input type="radio" th:id="${question.getQuestionNumber()}" th:name="${question.getQuestionNumber()}" th:value="${option}"></input>
+                                    <label th:text="${option}"></label>
+                                </div>
+                            </div>
+                            <div th:if="${question.getType() == 'checkbox'}" class="question-response-checkbox">
+                                <div th:each="option : ${question.getOptions()}" class="question-response-checkbox-option">
+                                    <input type="checkbox" th:id="${question.getQuestionNumber()}" th:name="${question.getQuestionNumber()}" th:value="${option}"></input>
+                                    <label th:text="${option}"></label>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button onclick="submitQuestionnaire()" id="submit-button" style="display: none; width: calc(100% - 2rem); margin: 1rem auto;">Submit</button>
+        </div>
+    </div>
+</body>
+
+</html>

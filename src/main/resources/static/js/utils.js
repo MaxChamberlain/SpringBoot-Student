@@ -33,3 +33,7 @@ function getCookie(name) {
 function navigateToAccountPage(){
     window.location.href = '/account/' + getCookie('ACCESS_TOKEN')
 }
+
+navigateToFormPage = () => {
+    window.location.href = '/questionnaire/' + getCookie('ACCESS_TOKEN')
+}

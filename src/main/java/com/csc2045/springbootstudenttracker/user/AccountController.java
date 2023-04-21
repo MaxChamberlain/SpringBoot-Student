@@ -19,11 +19,19 @@ public class AccountController {
     @PostMapping("/update")
     public ResponseEntity updateAccount(@RequestBody UpdateUserDTO user) {
         String email = jwtService.extractUsername(user.id.toString());
-        System.out.println(email);
         User userToUpdate = userRepository.findByEmail(email).orElseThrow();
+        if(email == null  || email.equals(user.email)) {
+            user.email = userToUpdate.getStudentEmail();
+        }
+        // check if phone number only numbers and 10 digits
+        if(user.phone == null || user.phone.equals(userToUpdate.getStudentPhone()) || user.phone.length() != 10) {
+            user.phone = userToUpdate.getStudentPhone();
+        }
         userToUpdate.setAllowTexts(user.allowTexts);
         userToUpdate.setAllowEmails(user.allowEmails);
+        userToUpdate.setStudentEmail(user.email);
+        userToUpdate.setStudentPhone(user.phone);
         userRepository.save(userToUpdate);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(jwtService.generateToken(userToUpdate));
     }
 }

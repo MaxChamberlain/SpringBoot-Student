@@ -8,6 +8,9 @@ import lombok.RequiredArgsConstructor;
 public class UpdateUserDTO {
     public boolean allowTexts;
     public boolean allowEmails;
+    public String studentNumber;
+
     public String email;
+    public String phone;
     public String id;
 }

@@ -66,17 +66,16 @@
     width: 690px;
 }
 
-.form > input{
-    width: 100%;
+input[type=text], input[type=password]{
+    width: calc(100% - 3rem);
     padding: 0.5rem;
     border: 1px solid black;
     border-radius: 0.25rem;
-    margin: 0.5rem 0;
     background-color: rgba(0,0,0,0.2);
     color: white;
 }
 
-.form > button{
+button{
     background-color: var(--primary-blue);
     color: white;
     border: none;
@@ -84,6 +83,7 @@
     padding: 0.5rem;
     margin: 2rem auto;
     width: 100%;
+    cursor: pointer;
 }
 
 .divider{

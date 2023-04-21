@@ -24,6 +24,7 @@ public class User implements UserDetails {
     private String studentPhone;
     private Boolean allowTexts;
     private Boolean allowEmails;
+    private String studentNumber;
     private String password;
 
     @OneToMany()
@@ -158,5 +159,13 @@ public class User implements UserDetails {
 
     public void setActivities(List<Activity> activities) {
         this.activities = activities;
+    }
+
+    public String getStudentNumber() {
+        return studentNumber;
+    }
+
+    public void setStudentNumber(String studentNumber) {
+        this.studentNumber = studentNumber;
     }
 }

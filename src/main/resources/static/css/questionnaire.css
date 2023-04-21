@@ -1,0 +1,33 @@
+.question-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    width: 100%;
+    position: relative;
+    border: 1px solid white;
+    border-radius: 0.5rem;
+    padding-bottom: 2rem;
+    margin-bottom: 1rem;
+    gap: 1rem;
+}
+
+.question{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    padding: 1rem;
+    margin: 1rem;
+    width: calc(100% - 2rem);
+}
+
+.question-response{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+}
