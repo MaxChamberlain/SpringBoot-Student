@@ -168,4 +168,8 @@ public class User implements UserDetails {
     public void setStudentNumber(String studentNumber) {
         this.studentNumber = studentNumber;
     }
+
+    public Long getId() {
+        return id;
+    }
 }

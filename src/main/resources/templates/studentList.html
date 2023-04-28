@@ -39,6 +39,11 @@
                     <span th:text='${"Since " + student.activities[0].startDate}'>startDate</span>
                 </div>
             </div>
+            <a th:href="@{/student/{id}(id=${student.getId()})}" style='color: white; text-decoration: none; font-size: 1rem; font-weight: 300; letter-spacing: 1px;'>
+                <div style='position: absolute; bottom: 0; left: 0; right: 0; padding: 1rem; background-color: var(--primary-blue); border-radius: 0 0 1rem 1rem;'>
+                    View Student
+                </div>
+            </a>
         </dl>
     </div>
     <div th:if="${#lists.isEmpty(students)}">

@@ -33,6 +33,10 @@
         <span>Phone Number</span>
         <input type="text" id="phone" th:value="${user.getStudentPhone()}"></input>
       </div>
+      <div style="padding: 1rem;">
+        <span>Student Number (S########)</span>
+        <input type="text" id="student-number" th:value="${user.getStudentNumber()}"></input>
+      </div>
     </div>
     <div style="background: hsl(220, 30%, 30%); padding: 1rem; border-radius: 0.5rem;">
       <div style="display: flex; gap: 1rem; justify-content: center;">

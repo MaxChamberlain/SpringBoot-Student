@@ -3,6 +3,8 @@ async function updateAccountDetails(){
     let allowEmails = document.getElementById('emails-opted').checked
     let phone = document.getElementById('phone').value
     let email = document.getElementById('email').value
+    let studentNumber = document.getElementById('student-number').value
+    studentNumber = studentNumber.toUpperCase()
 
     let id = window.location.href.split('/')[window.location.href.split('/').length - 1]
 
@@ -12,9 +14,16 @@ async function updateAccountDetails(){
         allowEmails,
         phone,
         email,
+        studentNumber,
     }
 
-    if(!phone || !email) return;
+    let studentNumberValid = true;
+    if(!studentNumber) studentNumberValid = false;
+    if(!studentNumber.length > 9) studentNumberValid = false;
+    if(!studentNumber.charAt(0) === 'S') studentNumberValid = false;
+    if(isNaN(parseInt(studentNumber.slice(1)))) studentNumberValid = false;
+
+    if(!phone || !email || !studentNumberValid) return;
     if(allowTexts === null) allowTexts = false;
     if(allowEmails === null) allowEmails = false;
 

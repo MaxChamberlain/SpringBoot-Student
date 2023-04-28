@@ -156,3 +156,31 @@ body{
     height: 100%;
     width: 100%;
 }
+
+.student-page-container{
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.activity-list-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: hsl(220, 22%, 40%);
+    margin-top: 1rem;
+}
+
+.activity-list-container > .activity {
+    width: calc(100% - 4rem);
+    background-color: hsl(220, 12%, 30%);
+    border-radius: 1rem;
+    border: 1px solid #ccc;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

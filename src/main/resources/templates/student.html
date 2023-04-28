@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}"></link>
+  <link rel="stylesheet" th:href="@{/css/header.css}"></link>
+  <script src="../static/js/utils.js" th:src="@{/js/utils.js}"></script>
+</head>
+
+<body>
+<div class="layout-header" onload="onHeaderLoad()">
+  <a href="/home">
+    <img src="../static/assets/images/home_icon.png" th:src="@{/assets/images/home_icon.png}" style="height: 2rem; aspect-ratio: 1/1; object-fit: contain; filter: invert();"></image>
+  </a>
+  <a href="/students" class="link" style="color: white;">
+    Student List
+  </a>
+  <div class="layout-button" onclick="navigateToAccountPage()">
+    My Account
+  </div>
+</div>
+<div class="student-page-container">
+  <h2 style="text-align: center;">Students</h2>
+  <div class="student-list-card" style="position: relative; height: fit-content;">
+    <dt style="font-weight: 100; letter-spacing: 1px">
+      <span th:text="${student.studentFirstName}">Name</span>
+      <span th:text="${student.studentLastName}">Name</span>
+    </dt>
+    <div class="divider"></div>
+    <dt style="font-weight: 300; letter-spacing: 1px; font-size: 1rem; cursor: pointer; display: flex; gap: 0.25rem;" onclick="copy(this.children[0])">
+      <span th:text="${student.studentEmail}">Email</span>
+      <image src="../static/assets/images/copy_icon.png" th:src="@{/assets/images/copy_icon.png}" id="copy-icon" style="height: 1rem; aspect-ratio: 1/1; object-fit: contain; filter: invert();"></image>
+    </dt>
+  </div>
+
+  <div class="activity-list-container">
+    <span th:if="${student.activities.size() <= 0}" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 1.5rem; font-weight: 300; letter-spacing: 1px; color: #999999;">No activities</span>
+    <div class="activity" th:each="activity : ${student.activities}">
+      <dt th:text="${activity.type}">Activity Name</dt>
+      <dt th:text="${activity.title}">Activity Date</dt>
+      <dt th:text="${activity.startDate + ' - ' + (activity.endDate == null ? 'Now' : activity.endDate)}">Activity Date</dt>
+      <dt th:text="${activity.description}">Activity Description</dt>
+    </div>
+  </div>
+</div>
+</body>
+
+</html>

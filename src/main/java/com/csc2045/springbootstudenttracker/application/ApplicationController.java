@@ -62,7 +62,6 @@ public class ApplicationController {
     @RequestMapping(value="/students", method=RequestMethod.GET)
     public String students(Model model) {
         model.addAttribute("students", userRepository.findAll());
-
         return "studentList";
     }
 
