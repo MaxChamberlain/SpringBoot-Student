@@ -33,10 +33,10 @@
             </dt>
             <span th:if="${student.activities.size() <= 0}" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 1.5rem; font-weight: 300; letter-spacing: 1px; color: #999999;">No activities</span>
             <div th:if="${student.activities.size() > 0}" class="student-card-activity-container">
-                <span>Currently <span th:if='${student.activities[0].type == "School"}'>In School</span><span th:if='${student.activities[0].type == "Work"}'>Working</span></span>
+                <span>Currently <span th:if='${student.activities[student.activities.size() - 1].type == "School"}'>In School</span><span th:if='${student.activities[student.activities.size() - 1].type == "Work"}'>Working</span></span>
                 <div style="font-size: 1rem; opacity: 0.95; text-align: center">
-                    <span th:text='${"At " + student.activities[0].title}'>title</span> <br />
-                    <span th:text='${"Since " + student.activities[0].startDate}'>startDate</span>
+                    <span th:text='${"At " + student.activities[student.activities.size() - 1].title}'>title</span> <br />
+                    <span th:text='${"Since " + student.activities[student.activities.size() - 1].startDate}'>startDate</span>
                 </div>
             </div>
             <a th:href="@{/student/{id}(id=${student.getId()})}" style='color: white; text-decoration: none; font-size: 1rem; font-weight: 300; letter-spacing: 1px;'>

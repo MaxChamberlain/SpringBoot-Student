@@ -27,6 +27,7 @@ async function onLogin() {
             }
         )
         let text = await data.text()
+        console.log(text)
         let token = text?.split('=')[1]?.replace(')', '') ?? null;
         if (token != null) {
             if (text.includes("stylesheet")) return
@@ -39,6 +40,49 @@ async function onLogin() {
         console.log(e)
         document.cookie = "ACCESS_TOKEN=; max-age=0";
         window.location.href = "/login"
+    }
+}
+
+async function checkMfa(){
+    let code = document.getElementById('code')?.value ?? '';
+    let email = document.getElementById('email')?.value ?? '';
+    try{
+        let data = await fetch(
+        `/mfa/checkCode/${email}/${code}`,
+        {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        let status = await data.status
+        if(status === 200){
+            await onLogin();
+        } else {
+            alert("Invalid code!")
+        }
+    } catch (e) {
+        console.log(e)
+        window.location.reload()
+    }
+}
+
+async function onInitialLogin(){
+    let email = document.getElementById('email')?.value ?? '';
+    try{
+        let data = await fetch(
+        `/mfa/getCode/${email}`,
+        {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        console.log(await data.text())
+        document.getElementById('enter-2fa-code').style.display = 'block'
+    } catch (e) {
+        console.log(e)
+        window.location.reload()
     }
 }
 

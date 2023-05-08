@@ -29,7 +29,7 @@
                     <label for="password">Password:</label>
                     <input type="password" name="password" id="password" size="15" th:field="${registerRequest.password}"></input><br/>
                     <label for="phone">Phone:</label>
-                    <input type="text" name="phone" id="phone" size="50" th:field="${registerRequest.phone}"></input><br/>
+                    <input type="text" name="phone" id="phone" size="50" th:field="${registerRequest.phone}" required></input><br/>
                     <button type="submit" onclick="onRegister()">Register</button>
                 </div>
                 <span>Already have an account? <a class='link' href="/login">Log In!</a></span>

@@ -1,6 +1,7 @@
 package com.csc2045.springbootstudenttracker.user;
 
 import com.csc2045.springbootstudenttracker.activity.Activity;
+import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

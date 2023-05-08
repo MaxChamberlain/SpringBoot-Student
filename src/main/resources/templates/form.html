@@ -61,7 +61,13 @@
                     </div>
                 </div>
             </div>
-            <button onclick="submitQuestionnaire()" id="submit-button" style="display: none; width: calc(100% - 2rem); margin: 1rem auto;">Submit</button>
+            <button onclick="submitQuestionnaire({
+                question1: document.getElementById('1').value,
+                question2: document.getElementById('2').value,
+                question3: document.getElementById('3').value,
+                question4: document.getElementById('4').value,
+                question5: document.getElementById('5').value,
+            })" id="submit-button" style="display: none; width: calc(100% - 2rem); margin: 1rem auto;">Submit</button>
         </div>
     </div>
 </body>

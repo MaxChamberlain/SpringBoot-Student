@@ -26,7 +26,7 @@ public class SecurityConfiguration {
         .disable()
         .authorizeHttpRequests(request -> {
             request
-            .requestMatchers("/api/v1/auth/**", "/login", "/register", "/css/**", "/js/**")
+            .requestMatchers("/api/v1/auth/**", "/login", "/register", "/css/**", "/js/**", "/mfa/**")
             .permitAll()
             .anyRequest()
             .authenticated();

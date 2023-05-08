@@ -1,6 +1,7 @@
 package com.csc2045.springbootstudenttracker.user;
 
 import com.csc2045.springbootstudenttracker.activity.Activity;
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -17,6 +18,7 @@ import java.util.*;
 public class User implements UserDetails {
     @Id
     @GeneratedValue
+    @Column(name="id")
     private Long id;
     private String studentFirstName;
     private String studentLastName;
@@ -26,6 +28,8 @@ public class User implements UserDetails {
     private Boolean allowEmails;
     private String studentNumber;
     private String password;
+    public String mfaCode;
+    public String mfaExpiryTime;
 
     @OneToMany()
     @JoinColumn(name="user_id", referencedColumnName = "id")
@@ -171,5 +175,8 @@ public class User implements UserDetails {
 
     public Long getId() {
         return id;
+    }
+    public void setId(Long id) {
+        this.id = id;
     }
 }

@@ -18,10 +18,14 @@
             <input type="text" name="email" id="email" size="50" th:field="${authenticationRequest.email}"></input><br/>
             <label for="password">Password:</label>
             <input type="password" name="password" id="password" size="15" th:field="${authenticationRequest.password}"></input><br/>
-            <button type="submit" onclick="onLogin()">Login</button>
+            <button type="submit" onclick="onInitialLogin()">Login</button>
         </div>
         <span>Don't have an account? <a class='link' href="/register">Sign Up!</a></span>
     </div>
+</div>
+<div class="verify-code" id="enter-2fa-code">
+    <input id="code" />
+    <button  onclick="checkMfa()">Submit</button>
 </div>
 </body>
 </html>
